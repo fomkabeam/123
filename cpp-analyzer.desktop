@@ -1,0 +1,9 @@
+ [Desktop Entry]
+ Type=Application
+ Name=Анализатор C++ кода
+ Comment=Графическая оболочка для анализа исходного кода C++
+ Exec=cpp-analyzer
+ Icon=cpp-analyzer
+ Terminal=false
+ Categories=Development;Utility;
+

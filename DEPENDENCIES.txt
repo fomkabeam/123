@@ -1,0 +1,26 @@
+# Зависимости анализатора C++ (Astra Linux / Debian)
+# Установка на чистую систему перед первым запуском:
+#
+#   sudo apt-get update
+#   sudo apt-get install -y $(grep -v '^#' DEPENDENCIES.txt | tr '\n' ' ')
+#
+# Или вручную перечислить пакеты ниже.
+
+# Обязательные (GUI и подключение к БД)
+python3
+python3-tk
+python3-psycopg2
+
+# Для раздела «Диагностика кода» (статические предупреждения по коду)
+# Без clang-tidy вкладка «Диагностика кода» будет пустой, пока не настроен COMPILE_COMMANDS
+clang-tidy
+
+# Для метода CLANG_AST / CLANG_AST_NO_SENS (разбор функций/вызовов через AST):
+#   На машине сборки (перед PyInstaller): pip3 install libclang==9.0.1 — для Astra с LLVM 6 версия
+#     обёртки должна быть совместима с системной libclang.so (новые версии дают undefined symbol).
+#   На машине пользователя: системная libclang (Astra: libclang-6.0-dev, путь /usr/lib/llvm-6.0/lib/).
+#   При необходимости: LOG_PATH.txt — CLANG_LIB=/usr/lib/llvm-6.0/lib/libclang.so.1
+
+# Опционально: сервер PostgreSQL (если БД разворачивается на этой же машине)
+# postgresql
+# postgresql-contrib

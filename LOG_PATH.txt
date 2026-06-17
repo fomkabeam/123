@@ -1,0 +1,16 @@
+DB_NAME=analyse_db
+DB_USER=postgres
+DB_PASS=pndv
+DB_HOST=localhost
+DB_PORT=5432
+PATH_FILE=/home/user/projects/Skif_Service_Cert-1522
+PATH_PYTHON=/usr/bin/python3 
+FILE_EXTENSION=c cc cpp h hpp inl H C CPP HPP
+FILE_ID_IN_TBL_SEARCH=0
+COMPILE_COMMANDS=/home/user/projects/Skif_Service_Cert-1522/build/compile_commands.json
+PID_SEARCH_PATH=/home/pidSearch.h
+DROP_TBL=1
+SEARH_METH=CLANG
+CHECK_DEPTH=2
+CLANG_FILES_FROM=compile_commands
+CLANG_DEBUG=1
