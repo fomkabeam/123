@@ -1,0 +1,6 @@
+C:\Users\Alexey\Desktop\CD2\crc16\crc16
+ndvanalyzingcpp
+ndvparser
+pndv
+localhost
+5432
