@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# Сборка .deb: только исполняемый файл и конфиг, без исходного кода
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	# Установка PyInstaller (если ещё нет) и сборка одного исполняемого файла
+	python3 -m pip install --user pyinstaller 2>/dev/null || true
+	python3 -m PyInstaller --noconfirm cpp_analyzer.spec
+
+override_dh_auto_install:
+	# Устанавливаем бинарник, конфиг и скрипт диагностики Clang
+	mkdir -p debian/tmp/opt/cpp-analyzer debian/tmp/usr/bin
+	cp dist/cpp-analyzer debian/tmp/opt/cpp-analyzer/
+	cp LOG_PATH.txt debian/tmp/opt/cpp-analyzer/
+	test -f diagnose_clang_parse.py && cp diagnose_clang_parse.py debian/tmp/opt/cpp-analyzer/ || true
+	chmod 755 debian/tmp/opt/cpp-analyzer/cpp-analyzer
+	printf '#!/bin/sh\nexec /opt/cpp-analyzer/cpp-analyzer "$$@"\n' > debian/tmp/usr/bin/cpp-analyzer
+	chmod 755 debian/tmp/usr/bin/cpp-analyzer
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf build dist

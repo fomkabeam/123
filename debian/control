@@ -1,0 +1,17 @@
+Source: cpp-analyzer
+Section: devel
+Priority: optional
+Maintainer: Astra Linux <support@astra-linux.com>
+Build-Depends: debhelper (>= 10), python3, python3-pip, python3-tk, python3-psycopg2
+Standards-Version: 4.5.0
+
+Package: cpp-analyzer
+Architecture: any
+Depends: python3, python3-tk, python3-psycopg2
+Recommends: clang-tidy, libclang-6.0 | libclang-14-1 | libclang-11-1 | libclang1
+Description: Анализатор кода C++ с графическим интерфейсом
+ Анализатор предназначен для статического анализа проектов C++,
+ просмотра результатов в GUI, работы с базой данных PostgreSQL.
+ Раздел «Диагностика кода» использует clang-tidy (пакет рекомендуется).
+ Методы CLANG_AST и CLANG_AST_NO_SENS требуют нативную библиотеку libclang
+ (на Astra: libclang-6.0, путь /usr/lib/llvm-6.0/lib; иные дистры — libclang-14-1 и т.д.).
